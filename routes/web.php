@@ -15,3 +15,4 @@ use App\Http\Controllers\TimelineController;
 */
 
 Route::get('/', [TimelineController::class, 'index']);
+Route::get('/timelines/{timeline}', [TimelineController::class, 'show']);
