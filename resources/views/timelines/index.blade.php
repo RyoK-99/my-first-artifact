@@ -15,7 +15,7 @@
             <div class='timeline'>
                 <h2 class='username'>{{ $timeline->user_id }}</h2>
                 <h3 class='gametitle'>{{ $timeline->game_id }}</h3>
-                <h4 class='title'>{{ $timeline->title }}</h4>
+                <a href="/timeline/{{ $timeline->id }}"><h4 class='title'>{{ $timeline->title }}</h4></a>
                 <p class='body'>{{ $timeline->body }}</p>
             </div>
             @endforeach

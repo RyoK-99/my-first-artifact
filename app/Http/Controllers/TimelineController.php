@@ -11,4 +11,9 @@ class TimelineController extends Controller
     {
         return view('timelines/index')->with(['timelines' => $timeline->getPaginateByLimit()]);
     }
+    
+    public function show(Timeline $timeline)
+    {
+        return view('timelines/show')->with(['timeline' => $timeline]);
+    }
 }
