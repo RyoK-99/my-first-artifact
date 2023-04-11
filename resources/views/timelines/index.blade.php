@@ -20,5 +20,6 @@
             </div>
             @endforeach
         </div>
+        <div class='paginate'>{{ $timelines->links() }}</div>
     </body>
 </html>

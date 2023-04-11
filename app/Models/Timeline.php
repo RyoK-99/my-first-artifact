@@ -9,8 +9,8 @@ class Timeline extends Model
 {
     use HasFactory;
     
-    public function getByLimit(int $limit_count = 10)
+    public function getPaginateByLimit(int $limit_count = 10)
     {
-        return $this->orderBy('updated_at', 'DESC')->limit($limit_count)->get();
+        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }
