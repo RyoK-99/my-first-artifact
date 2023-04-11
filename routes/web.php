@@ -14,4 +14,6 @@ use App\Http\Controller\TimelineController;
 |
 */
 
-Route::get('/timeline',[TimelineController::class, 'index']);
+Route::get('/', function() {
+    return view('timelines/index');
+});
