@@ -16,4 +16,16 @@ class TimelineController extends Controller
     {
         return view('timelines/show')->with(['timeline' => $timeline]);
     }
+    
+    public function create()
+    {
+        return view('timelines/create');
+    }
+    
+    public function store(Request $request, Timeline $timeline)
+    {
+        $input = $request['timeline'];
+        $timeline->fill($input)->save();
+        return redirect('/timelines/' . $timeline->id);
+    }
 }
