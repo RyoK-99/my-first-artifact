@@ -12,6 +12,16 @@
         <h1>CREATE TIMELINE</h1>
         <form action="/timelines" method="POST">
             @csrf
+            <div class="user">
+            </div>
+            <div class ="game">
+                <h2>GameTitle</h2>
+                <select name="timeline[game_id]">
+                    @foreach($games as $game)
+                        <option value="{{ $game->id }}">{{ $game->name }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div class="title">
                 <h2>Title</h2>
                 <input type="text" name="timeline[title]" placeholder="タイトル">

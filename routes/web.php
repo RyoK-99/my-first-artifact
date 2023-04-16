@@ -18,3 +18,5 @@ Route::get('/', [TimelineController::class, 'index']);
 Route::get('/timelines/create', [TimelineController::class,'create']);
 Route::get('/timelines/{timeline}', [TimelineController::class ,'show']);
 Route::post('/timelines', [TimelineController::class, 'store']);
+
+require __DIR__.'/auth.php';
