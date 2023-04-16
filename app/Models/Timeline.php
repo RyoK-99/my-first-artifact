@@ -10,14 +10,19 @@ class Timeline extends Model
     use HasFactory;
     
     protected $fillable = [
-        'user_id',
         'title',
         'body',
+        'game_id',
         ];
     
     public function getPaginateByLimit(int $limit_count = 10)
     {
-        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('game', 'user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+    public function game()
+    {
+        return $this->belongsTo(Game::class);
     }
     
     public function user()

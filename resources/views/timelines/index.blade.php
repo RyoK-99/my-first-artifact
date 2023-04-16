@@ -10,16 +10,16 @@
     </head>
     <body class="antialiased">
         <h1>Timeline</h1>
-        <a href="timelines/create">create</a>
         <div class='timelines'>
             @foreach ($timelines as $timeline)
             <div class='timeline'>
-                <h2 class='username'>{{ $timeline->user_id }}</h2>
-                <h3 class='gametitle'>{{ $timeline->game_id }}</h3>
+                <h2 class='username'>{{ $timeline->user->name }}</h2>
+                <p><a href ='title'>{{ $timeline->game->name }}<a/></p>
                 <a href="/timelines/{{ $timeline->id }}">{{ $timeline->title }}</a>
                 <p class='body'>{{ $timeline->body }}</p>
             </div>
             @endforeach
+        <a href="timelines/create">create</a>
         </div>
         <div class='paginate'>{{ $timelines->links() }}</div>
     </body>
