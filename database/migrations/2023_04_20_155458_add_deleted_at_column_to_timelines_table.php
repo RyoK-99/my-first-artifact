@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('timelines', function (Blueprint $table) {
+            $table->softDeletesTz($column = 'deleted_at', $precision = 0);
         });
     }
 
@@ -26,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::table('timelines', function (Blueprint $table) {
+            //
+        });
     }
 };

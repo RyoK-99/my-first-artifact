@@ -17,10 +17,24 @@
                 <p><a href ='title'>{{ $timeline->game->name }}<a/></p>
                 <a href="/timelines/{{ $timeline->id }}">{{ $timeline->title }}</a>
                 <p class='body'>{{ $timeline->body }}</p>
+                <form action="/timelines/{{ $timeline->id }}" id="form_{{ $timeline->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="button" onclick="deleteTimeline({{ $timeline->id }})">delete</button>
+                </form>
             </div>
             @endforeach
         <a href="timelines/create">create</a>
         </div>
         <div class='paginate'>{{ $timelines->links() }}</div>
+        <script>
+            function deleteTimeline(id) {
+                'use strict'
+                
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }    
+            }
+        </script>
     </body>
 </html>
