@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\TimelineRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Timeline;
 use App\Models\User;
@@ -25,7 +26,7 @@ class TimelineController extends Controller
         return view('timelines/create')->with(['games' => $game->get()]);
     }
     
-    public function store(Request $request, Timeline $timeline)
+    public function store(TimelineRequest $request, Timeline $timeline)
     {
         $input = $request['timeline'];
         $timeline->user_id = Auth::id();

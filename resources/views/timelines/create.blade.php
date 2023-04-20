@@ -24,11 +24,13 @@
             </div>
             <div class="title">
                 <h2>Title</h2>
-                <input type="text" name="timeline[title]" placeholder="タイトル">
+                <input type="text" name="timeline[title]" placeholder="タイトル" value={{ old('timeline.title') }}>
+                <p class='title__error' style="color:red">{{ $errors->first('timeline.title') }}</p>
             </div>
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="timeline[body]" placeholder="「ゲームタイトル」＠１募集します"></textarea>
+                <textarea name="timeline[body]" placeholder="「ゲームタイトル」＠１募集します">{{ old('timeline.body') }}</textarea>
+                <p class="body__error" style="color:red">{{ $errors->first('timeline.body') }}</p>
             </div>
             <input type="submit" value="store">
         </from>
