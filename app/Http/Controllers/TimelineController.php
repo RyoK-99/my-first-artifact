@@ -33,4 +33,10 @@ class TimelineController extends Controller
         $timeline->fill($input)->save();
         return redirect('/timelines/' . $timeline->id);
     }
+    
+    public function delete(Timeline $timeline)
+    {
+        $timeline->delete();
+        return redirect('/');
+    }
 }

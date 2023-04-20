@@ -18,5 +18,6 @@ Route::get('/', [TimelineController::class, 'index']);
 Route::get('/timelines/create', [TimelineController::class,'create']);
 Route::get('/timelines/{timeline}', [TimelineController::class ,'show']);
 Route::post('/timelines', [TimelineController::class, 'store']);
+Route::delete('/timelines/{timeline}', [TimelineController::class, 'delete']);
 
 require __DIR__.'/auth.php';
