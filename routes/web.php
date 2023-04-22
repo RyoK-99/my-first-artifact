@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TimelineController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,6 @@ Route::get('/timelines/create', [TimelineController::class,'create']);
 Route::get('/timelines/{timeline}', [TimelineController::class ,'show']);
 Route::post('/timelines', [TimelineController::class, 'store']);
 Route::delete('/timelines/{timeline}', [TimelineController::class, 'delete']);
+Route::get('/comments', [CommentController::class, 'index']);
 
 require __DIR__.'/auth.php';
