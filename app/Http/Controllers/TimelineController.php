@@ -18,7 +18,8 @@ class TimelineController extends Controller
     
     public function show(Timeline $timeline)
     {
-        return view('timelines/show')->with(['timeline' => $timeline]);
+        $comments = $timeline->comments;
+        return view('timelines/show')->with(['timeline' => $timeline, 'comments' => $comments]);
     }
     
     public function create(Game $game)

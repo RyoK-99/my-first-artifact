@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('timelines', function (Blueprint $table) {
-            $table->softDeletesTz($column = 'deleted_at', $precision = 0);
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('timeline_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->string('body',400);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('timelines', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('comments');
     }
 };

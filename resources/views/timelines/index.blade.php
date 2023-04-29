@@ -7,6 +7,7 @@
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
+    <x-app-layout>
     </head>
     <body class="antialiased">
         <h1>Timeline</h1>
@@ -37,4 +38,5 @@
             }
         </script>
     </body>
+    </x-app-layout>
 </html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <x-app-layout>
     <head>
         <meta charset="utf-8">
         <title>Game Application</title>
@@ -30,16 +29,15 @@
             </div>
             @endforelse
         </div>
-        <form action="/timelines/{{ $timeline->id }}" method="POST">
+        <form action="/comments" method="POST">
             @csrf
             <div class="body">
-                <textarea name="comment" placeholder="コメントを入力できます。">{{ old('comment.body') }}</textarea>
+                <textarea name="comment[body]" placeholder="コメントを入力できます。">{{ old('comment.body') }}</textarea>
             </div>
-            <input type="submit" value="store">
+            <input type="submit" value="store"/>
         </form>
         <div class='footer'>
             <a href="/">戻る</a>
         </div>
     </body>
-    </x-app-layout>
 </html>
