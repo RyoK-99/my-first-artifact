@@ -29,6 +29,10 @@ Route::delete('/timelines/{timeline}', [TimelineController::class, 'delete']);
 Route::post('/timelines/{timeline}', [CommentController::class, 'store']);
 
 Route::get('/reviews', [ReviewController::class, 'index']);
+Route::get('/reviews/create',[ReviewController::class, 'create']);
+Route::get('/reviews/{review}', [ReviewController::class, 'show']);
+Route::post('/reviews', [ReviewController::class, 'store']);
+Route::delete('/reviews/{review}', [ReviewController::class, 'delete']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

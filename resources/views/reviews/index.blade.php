@@ -20,11 +20,21 @@
                 <form action="/reviews/{{ $review->id }}" id="form_{{ $review->id }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="button" onclick="deleteTimeline({{ $timeline->id }})">delete</button>
+                <button type="button" onclick="deleteReview({{ $review->id }})">delete</button>
                 </form>
             </div>
             @endforeach
+            <a href='/reviews/create'>create</a>
         </div> 
         <div class='paginate'>{{ $reviews->links() }}</div>
+        <script>
+            function deleteReview(id) {
+                'use strict'
+                
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }    
+            }
+        </script>
     </body>
 </html>
