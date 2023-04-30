@@ -13,4 +13,9 @@ class Game extends Model
     {
         return $this->hasMany(Timeline::class);
     }
+    
+    public function reviews()
+    {
+        return $this->hasMany(Reviews::class);
+    }
 }
