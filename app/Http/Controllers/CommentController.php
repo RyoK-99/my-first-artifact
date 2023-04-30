@@ -14,11 +14,11 @@ class CommentController extends Controller
     
     public function store(CommentRequest $request, Comment $comment, Timeline $timeline)
     {
-        // $input = $request['comment'];
-        $comment->body = $request['comment'];
+        $input = $request['comment'];
+        // $comment->body = $request['comment'];
         $comment->user_id = Auth::id();
         $comment->timeline_id = $timeline->id;
-        $comment->save();
+        $comment->fill($input)->save();
         
         
         return redirect('/timelines/' .$timeline->id);

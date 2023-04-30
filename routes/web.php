@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,8 @@ Route::post('/timelines', [TimelineController::class, 'store']);
 Route::delete('/timelines/{timeline}', [TimelineController::class, 'delete']);
 
 Route::post('/timelines/{timeline}', [CommentController::class, 'store']);
+
+Route::get('/reviews', [ReviewController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

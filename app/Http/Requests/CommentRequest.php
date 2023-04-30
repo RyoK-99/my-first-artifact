@@ -11,10 +11,17 @@ class CommentRequest extends FormRequest
      *
      * @return bool
      */
+     public function authorize()
+    {
+        return true;
+    }
+    
     public function rules()
     {
         return [
             'comment.body' => 'required|string|max:400',
         ];
     }
+    
+    
 }
