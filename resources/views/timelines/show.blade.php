@@ -33,7 +33,7 @@
         <form action="/timelines/{{ $timeline->id }}" method="POST">
             @csrf
             <div class="body">
-                <textarea name="comment" placeholder="コメントを入力できます。">{{ old('comment.body') }}</textarea>
+                <textarea name="comment[body]" placeholder="コメントを入力できます。">{{ old('comment.body') }}</textarea>
             </div>
             <input type="submit" value="store">
         </form>
