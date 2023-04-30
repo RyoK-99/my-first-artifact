@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('game_id');
+            $table->string('title',100);
+            $table->string('body',5000);
+            $table->integer('review')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
