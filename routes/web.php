@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,13 @@ Route::get('/reviews/create',[ReviewController::class, 'create']);
 Route::get('/reviews/{review}', [ReviewController::class, 'show']);
 Route::post('/reviews', [ReviewController::class, 'store']);
 Route::delete('/reviews/{review}', [ReviewController::class, 'delete']);
+
+Route::get('/games', [GameController::class, 'index']);
+Route::get('/games/create', [GameController::class, 'create']);
+Route::get('/games/{game}', [GameController::class, 'show']);
+Route::post('/games', [GameController::class, 'store']);
+Route::get('/games/{game}/edit', [GameController::class, 'edit']);
+Route::put('/games/{game}', [GameController::class, 'update']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

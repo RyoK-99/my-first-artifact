@@ -9,6 +9,16 @@ class Game extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+        'name',
+        'overview',
+    ];
+    
+    public function getPaginateByLimit(int $limit_count = 10)
+    {
+        return $this->orderBy('name', 'ASC')->paginate($limit_count);
+    }
+    
     public function timelines()
     {
         return $this->hasMany(Timeline::class);
