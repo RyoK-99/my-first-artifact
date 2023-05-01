@@ -23,6 +23,14 @@
                     @endforeach
                 </select>
             </div>
+                <h2>星評価</h2>
+            　　<div class="stars">
+                　　<span class="star" id="1">★</span>
+                　　<span class="star" id="2">★</span>
+                　　<span class="star" id="3">★</span>
+                　　<span class="star" id="4">★</span>
+                　　<span class="star" id="5">★</span>
+            　　</div>
             <div class="title">
                 <h2>Title</h2>
                 <input type="text" name="review[title]" placeholder="タイトル" value={{ old('review.title') }}>
