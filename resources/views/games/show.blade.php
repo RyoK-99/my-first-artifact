@@ -17,8 +17,34 @@
             </div>
         </div>
         <div class="edit">
-            <a href="/games/{{ $game->id }}/edit">update</a>
+            <a href="/games/{{ $game->id }}/edit">記事の更新</a>
         </div>
+        <a href='/reviews/create'>レビューを作る</a>
+        <div class='review'>
+            @forelse ($reviews as $review)
+            <a href="/reviews/{{ $review->id }}">{{ $review->title }}</a>
+            <p class='username'>{{ $review->user->name }}</p>
+            <p class='reviewbody'>{{ $review->body }}</p>
+            <form action="/reviews/{{ $review->id }}" id="form_{{ $review->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="button" onclick="deleteReview({{ $review->id }})">delete</button>
+            </form>
+            @empty
+            <div class='reviewempty'>
+                <p class='empty'>レビューはまだありません。</p>
+            </div>
+            @endforelse
+        </div>
+        <script>
+            function deleteReview(id) {
+                'use strict'
+                
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }    
+            }
+        </script>
         <div class="footer">
             <a href="/games">戻る</a>
         </div>

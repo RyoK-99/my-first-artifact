@@ -15,7 +15,8 @@ class GameController extends Controller
     
     public function show(Game $game)
     {
-        return view('games/show')->with(['game' => $game]);
+        $reviews = $game->reviews;
+        return view('games/show')->with(['game' => $game, 'reviews' => $reviews]);
     }
     
     public function create()
