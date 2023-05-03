@@ -38,13 +38,13 @@
             </div>
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="review[body]" placeholder="ゲームの概要を入力してください">{{ old('review.body') }}</textarea>
+                <textarea name="review[body]" placeholder="レビューの内容を入力してください">{{ old('review.body') }}</textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('review.body') }}</p>
             </div>
             <input type="submit" value="store">
         </from>
         <div class='footer'>
-            <a href="/">戻る</a>
+            <a href="/games/{{ $game->id }}">戻る</a>
         </div>
     </body>
     </x-app-layout>

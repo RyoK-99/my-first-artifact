@@ -21,6 +21,6 @@ class CommentController extends Controller
         $comment->fill($input)->save();
         
         
-        return redirect('/timelines/' .$timeline->id);
+        return redirect('/timelines/' . $timeline->id);
     }
 }
