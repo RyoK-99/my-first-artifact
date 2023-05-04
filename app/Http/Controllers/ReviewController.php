@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Review;
 use App\Models\User;
 use App\Models\Game;
+use App\Models\Like;
 
 class ReviewController extends Controller
 {
@@ -49,7 +50,7 @@ class ReviewController extends Controller
     
     public function unlike($id)
     {
-        $like = Like::where('review_id', $review->id)->where('user_id', Auth::id())->first();
+        $like = Like::where('review_id', $id)->where('user_id', Auth::id())->first();
         $like->delete();
         
         session()->flash('success', 'You Unliked the Review.');

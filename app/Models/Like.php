@@ -9,6 +9,11 @@ class Like extends Model
 {
     use HasFactory;
     
+    protected $fillable = [
+        'review_id',
+        'user_id',
+        ];
+    
     public function user()
     {
         return $this->belongsTo(User::class);
