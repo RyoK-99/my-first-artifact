@@ -14,8 +14,8 @@
         <div class='timelines'>
             @foreach ($timelines as $timeline)
             <div class='timeline'>
-                <h2 class='username'>{{ $timeline->user->name }}</h2>
-                <p><a href ='title'>{{ $timeline->game->name }}<a/></p>
+                <h2><a href ="users/{{ $timeline->user->id }}">{{ $timeline->user->name }}</a></h2>
+                <p><a href ="/games/{{ $timeline->game->id }}">{{ $timeline->game->name }}<a/></p>
                 <a href="/timelines/{{ $timeline->id }}">{{ $timeline->title }}</a>
                 <p class='body'>{{ $timeline->body }}</p>
                 <form action="/timelines/{{ $timeline->id }}" id="form_{{ $timeline->id }}" method="POST">

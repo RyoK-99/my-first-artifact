@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <x-app-layout>
     <head>
         <meta charset="utf-8">
         <title>Game Application</title>
@@ -10,20 +9,32 @@
 
     </head>
     <body class="antialiased">
-        <h1 class='user'>
-            {{ $user->name }}
-        </h1>
-        <div class='image_path'>
-        <img
-        
-            id="preview"
-            src="{{ isset(Auth::user()->image_path) ? asset('storage/' . Auth::user()->image_path) : asset('images/user_icon.png') }}" 
-            alt=""
-            class="w-16 h-16 rounded-full object-cover border-none bg-gray-200">
-        </div>
+        <h1>Games</h1>
+        <div class='games'>
+            @foreach ($games as $game)
+            <div class='game'>
+                <a href="/games/{{ $game->id }}">{{ $game->name }}</a>
+                <form action="/games/{{ $game->id }}" id="form_{{ $game->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="button" onclick="deleteGame({{ $game->id }})">delete</button>
+                </form>
+            </div>
+            @endforeach
+            <a href='/games/create'>create</a>
+        </div> 
+        <div class='paginate'>{{ $games->links() }}</div>
+        <script>
+            function deleteGame(id) {
+                'use strict'
+                
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }    
+            }
+        </script>
         <div class='footer'>
-            <a href="/">戻る</a>
+            <a href="/">Topページへ</a>
         </div>
     </body>
-    </x-app-layout>
 </html>
