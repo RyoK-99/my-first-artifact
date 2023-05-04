@@ -8,29 +8,18 @@
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         
     </head>
-    <body class="antialiased">
+    <body>
         <h1>ユーザー情報</h1>
-        <div class='users'>
-            <div class='user'>
-                <a href="/games/{{ $game->id }}">{{ $user->name }}</a>
-                <form action="/games/{{ $game->id }}" id="form_{{ $game->id }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="button" onclick="deleteGame({{ $game->id }})">delete</button>
-                </form>
-            </div>
-            @endforeach
-            <a href='/games/create'>create</a>
-        </div> 
-        <div class='paginate'>{{ $games->links() }}</div>
-        <script>
-            function deleteGame(id) {
-                'use strict'
-                
-                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
-                    document.getElementById(`form_${id}`).submit();
-                }    
-            }
-        </script>
+        <div class="mr-3">
+        <div class='username'>{{ $user->name }}</div>
+        <img
+            id="preview"
+            src="{{ isset(Auth::user()->image_path) ? asset('storage/' . Auth::user()->image_path) : asset('images/user_icon.png') }}" 
+            alt=""
+            class="w-16 h-16 rounded-full object-cover border-none bg-gray-200">
+        </div>
     </body>
+    <div class='footer'>
+        <a href="/">Topページへ</a>
+    </div>
 </html>

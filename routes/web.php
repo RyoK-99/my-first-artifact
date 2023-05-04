@@ -6,6 +6,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::post('/timelines', [TimelineController::class, 'store']);
 Route::delete('/timelines/{timeline}', [TimelineController::class, 'delete']);
 
 Route::post('/timelines/{timeline}', [CommentController::class, 'store']);
+
+Route::get('/users/{user}', [UserController::class, 'index']);
 
 Route::get('/reviews/create',[ReviewController::class, 'create']);
 Route::get('/reviews/{review}', [ReviewController::class, 'show']);
