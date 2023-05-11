@@ -33,7 +33,7 @@
             @endif
         </div>
         <div class='footer'>
-            <a href="/games">戻る</a>
+            <a href="/games/{{ $review->game->id }}">戻る</a>
         </div>
     </body>
     </x-app-layout>

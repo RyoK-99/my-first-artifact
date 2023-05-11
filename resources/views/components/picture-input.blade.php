@@ -1,7 +1,6 @@
 <div class="flex mb-4" x-data="picturePreview()">
     <div class="mr-3">
         <img
-        
             id="preview"
             src="{{ isset(Auth::user()->image_path) ? asset('storage/' . Auth::user()->image_path) : asset('images/user_icon.png') }}" 
             alt=""

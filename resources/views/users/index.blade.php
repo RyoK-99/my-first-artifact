@@ -12,11 +12,34 @@
         <h1>ユーザー情報</h1>
         <div class="mr-3">
         <div class='username'>{{ $user->name }}</div>
-        <img
-            id="preview"
-            src="{{ isset(Auth::user()->image_path) ? asset('storage/' . Auth::user()->image_path) : asset('images/user_icon.png') }}" 
-            alt=""
-            class="w-16 h-16 rounded-full object-cover border-none bg-gray-200">
+        <div class='image_path'>
+            @if (isset($user->image_path))
+               <img src="{{ asset('storage/' . $user->image_path) }}" width="100" height="100">
+            @else
+               NO Image
+            @endif
+        </div>
+        <div class='favorites'>
+            <h2>お気に入り</h2>
+            @forelse ($gameusers as $gameuser)
+            <div>{{ $gameuser->game->name }}</div>
+            @empty
+            <div class='gameuserempty'>
+                <p class='empty'>お気に入りはありません。</p>
+            </div>
+            @endforelse
+        </div>
+        <div class='timelines'>
+            <h3>最近の投稿</h3>
+            @forelse ($timelines as $timeline)
+            <p><a href ="/games/{{ $timeline->game->id }}">{{ $timeline->game->name }}<a/></p>
+                <a href="/timelines/{{ $timeline->id }}">{{ $timeline->title }}</a>
+                <p class='body'>{{ $timeline->body }}</p>
+            @empty
+            <div class='gameuserempty'>
+                <p class='empty'>最近の投稿はありません。</p>
+            </div>
+            @endforelse
         </div>
     </body>
     <div class='footer'>

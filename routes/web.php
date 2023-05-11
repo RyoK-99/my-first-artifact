@@ -43,6 +43,8 @@ Route::delete('/reviews/{review}', [ReviewController::class, 'delete']);
 Route::get('/games', [GameController::class, 'index']);
 Route::get('/games/create', [GameController::class, 'create']);
 Route::get('/games/{game}', [GameController::class, 'show']);
+Route::post('/games/favorite/{favorite}', [GameController::class, 'favorite'])->name('game.favorite');
+Route::post('/games/destroy/{destroy}', [GameController::class, 'destroy'])->name('game.destroy');
 Route::post('/games', [GameController::class, 'store']);
 Route::get('/games/{game}/edit', [GameController::class, 'edit']);
 Route::put('/games/{game}', [GameController::class, 'update']);

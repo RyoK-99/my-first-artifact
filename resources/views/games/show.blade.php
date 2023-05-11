@@ -13,6 +13,19 @@
         <div class='games'>
             <div class='game'>
                 <h2 class='name'>{{ $game->name }}</h2>
+                <div>
+                @if($game->is_liked_by_auth_user())
+                    <form action="{{ route('game.destroy', $game->id) }}" method="POST">
+                       @csrf
+                       <button type="submit" class="btn btn-success btn-sm">お気に入り<span class="badge">{{ $game->game_user->count() }}</span></button>
+                    </form>
+                @else
+                    <form action="{{ route('game.favorite', $game->id) }}" method="POST">
+                       @csrf
+                       <button type="submit" class="btn btn-secondary btn-sm">お気に入り<span class="badge">{{ $game->game_user->count() }}</span></button>
+                    </form>
+                @endif
+                </div>
                 <p class='overview'>{{ $game->overview }}</p>
             </div>
         </div>
@@ -22,7 +35,7 @@
         <a href='/reviews/create'>レビューを作る</a>
         <div class='review'>
             @forelse ($reviews as $review)
-            <a href="/reviews/{{ $review->id }}">{{ $review->title }}</a>
+            <div><a href="/reviews/{{ $review->id }}">{{ $review->title }}</a></div>
             <p class='username'>{{ $review->user->name }}</p>
             <p class='reviewbody'>{{ $review->body }}</p>
             <form action="/reviews/{{ $review->id }}" id="form_{{ $review->id }}" method="POST">
