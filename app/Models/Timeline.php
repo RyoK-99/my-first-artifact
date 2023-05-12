@@ -19,7 +19,7 @@ class Timeline extends Model
     
     public function getPaginateByLimit(int $limit_count = 10)
     {
-        return $this::with('game', 'user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('game', 'user')->orderBy('updated_at', 'DESC')->whereNull('deleted_at')->paginate($limit_count);
     }
     
     public function game()
